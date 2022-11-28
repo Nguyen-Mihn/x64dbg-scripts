@@ -1,0 +1,10 @@
+
+$stopAddr = 0x00434A06
+$startAddr = 0x00434280
+loop:
+bp $startAddr
+$startAddr = $startAddr + dis.len($startAddr)
+log {$startAddr}----->{$stopAddr}
+cmp $startAddr, $stopAddr
+jb loop
+ret

@@ -1,0 +1,20 @@
+// Never Step Into System Mode Template
+
+
+$iscallsys = 0
+loop:
+	$iscallsys = dis.iscallsystem(cip)
+	cmp $iscallsys, 1
+	log {dis.text(cip)}
+	//pause
+	je StepOverProc
+	log {dis.text(cip)}
+	//pause
+	log {dis.text(cip)}
+	stepinto
+	//pause
+	jmp loop
+StepOverProc:
+	log {dis.text(cip)}
+	stepover
+	jmp loop
